@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="PostgreSQL - rails_saas_development@localhost" uuid="1569d828-11a9-42c9-ac45-0095307437ad">
+      <secret-storage>master_key</secret-storage>
+      <user-name>saasu</user-name>
+      <schema-pattern>rails_saas_development.pg_catalog rails_saas_development.public</schema-pattern>
+      <default-schemas>rails_saas_development.public</default-schemas>
+    </data-source>
+  </component>
+</project>
