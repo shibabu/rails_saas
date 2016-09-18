@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   private
 
   def create_account
-    acoount = Account.new email: email
+    account = Account.new email: email
     account.save!
   end
 
