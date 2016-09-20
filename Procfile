@@ -1,3 +1,5 @@
+# Procfile for heroku
+# If running in development environment look into Procfile.dev instead
+
 web:      bundle exec puma -C config/puma.rb
-redis:    redis-server
-sidekiq:  bundle exec sidekiq -C config/sidekiq.yml
+worker:  bundle exec sidekiq -C config/sidekiq.yml

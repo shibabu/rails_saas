@@ -1,0 +1,7 @@
+# Use "heroku local" instead of "foreman"
+# Use "heroku local -f Procfile.dev" to run from this file in development mode
+# If running in production environment look into Procfile instead
+
+web:      bundle exec puma -C config/puma.rb
+redis:    redis-server
+sidekiq:  bundle exec sidekiq -C config/sidekiq.yml
