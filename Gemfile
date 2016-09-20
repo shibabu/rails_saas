@@ -38,8 +38,14 @@ gem 'rails_12factor', group: :production
 # Auth
 gem 'devise'
 
+# Asynchronous Devise Mail Send
+gem 'devise-async'
+
 # Pretty Print Hashes
 gem 'awesome_print'
+
+# Background Jobs with Sidekiq
+gem 'sidekiq'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
