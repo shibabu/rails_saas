@@ -21,5 +21,4 @@ class User < ActiveRecord::Base
   #     errors.add :email, ' is already used!'
   #   end
   # end
-
 end
