@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Ruby version
+ruby '2.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
@@ -49,6 +51,12 @@ gem 'sidekiq'
 
 # Puma as Web Server
 gem 'puma'
+
+# Bootstrap Sass
+gem 'bootstrap-sass'
+
+# Simple Form
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

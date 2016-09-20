@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   # Make sure the email is a unique ID
   # def email_is_unique
   #   unless Account.find_by_email(email).nil?
-  #     errors.add :email, ' is already used!'
+  #     errors.add :email, ' has already been used!'
   #   end
   # end
 end
