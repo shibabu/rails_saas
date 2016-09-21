@@ -1,5 +1,5 @@
 # Use "heroku local" instead of "foreman"
-# Use "heroku local -f Procfile.dev" to run from this file in development mode
+# Use "heroku local -p 3000 -f Procfile.dev" to run from this file in development mode and on port 3000
 # If running in production environment look into Procfile instead
 
 web:      bundle exec puma -C config/puma.rb

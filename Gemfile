@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 # Ruby version
 ruby '2.2.2'
 
+# DotEnv to automatically export ENV VARS from the .env file on application boot
+gem 'dotenv-rails', :groups => [:development, :test]
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use postgresql as the database for Active Record
@@ -57,6 +60,10 @@ gem 'bootstrap-sass'
 
 # Simple Form
 gem 'simple_form'
+
+# Payment processing with Stripe
+gem 'stripe'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
