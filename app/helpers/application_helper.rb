@@ -6,6 +6,8 @@ module ApplicationHelper
         'alert-success' #Green
       when 'alert'
         'alert-danger' #Red
+      when 'error'
+        'alert-warning' #Amber
       else
         type.to_s
     end
