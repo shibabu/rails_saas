@@ -1,0 +1,20 @@
+<h3>Edit Subscriptions</h3>
+<%= render partial: 'plans' %>
+
+<br>
+
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-4">
+
+    <%= form_tag "/subscriptions" do %>
+
+      <div class="form-group">
+        <%= collection_select :plan, :stripe_id, Plan.order(:amount), :stripe_id, :name, {}, html_options = {class: 'form-control'} %>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Update Subscription</button>
+
+    <% end %>
+
+  </div>
+</div>

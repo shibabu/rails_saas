@@ -2,8 +2,11 @@ class SubscriptionsController < ApplicationController
 
   before_action :authenticate_user!
 
-  def new
+  def index
+    @account = Account.find_by_email current_user.email
+  end
 
+  def new
   end
 
   def create
@@ -34,7 +37,10 @@ class SubscriptionsController < ApplicationController
 
   rescue => e
     redirect_to :new_subscription, flash: {alert: e.message}
+  end
 
+  def edit
+    @account = Account.find params[:id]
   end
 
 end

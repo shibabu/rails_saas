@@ -1,0 +1,15 @@
+<% if @account.stripe_plan_id %>
+  <% if @account.active_until > Time.now %>
+    <br>
+    <p><%= "Your subscription is active until #{@account.active_until}" %></p>
+  <% else %>
+    <br>
+    <p><%= "Your subscription expired on #{@account.active_until}" %></p>
+  <% end %>
+<% else %>
+  <br>
+  <p><%= "You don't have any subscriptions yet!" %></p>
+<% end %>
+
+<br>
+<%= link_to 'Edit Subscription', edit_subscription_path(@account.id), class: 'btn btn-primary' %>
