@@ -13,5 +13,6 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
+// TODO: Enable Turbolinks
 // require turbolinks
 //= require_tree .

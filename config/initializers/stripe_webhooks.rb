@@ -4,8 +4,6 @@ StripeEvent.configure do |events|
   # => In case an automatic renewal-payment is declined, the subscription will be deleted by Stripe
   events.subscribe 'customer.subscription.deleted' do |event|
 
-    # Print log for the console
-    ap customer.subscription.deleted
 
     # Retrieve the subscription object from the event
     subscription  = event.data.object
@@ -22,11 +20,10 @@ StripeEvent.configure do |events|
   # => In case an automatic renewal-payment is processed by Stripe, active_until field will be updated in the Model
   events.subscribe 'customer.subscription.updated' do |event|
 
-    # Print log for the console
-    ap customer.subscription.deleted
 
     # Retrieve the subscription object from the event
     subscription = event.data.object
+    customer_id   = subscription.customer
 
     # Update Account with the new changes
     account                 = Account.find_by_customer_id customer_id
