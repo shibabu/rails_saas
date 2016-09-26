@@ -64,6 +64,8 @@ gem 'simple_form'
 # Payment processing with Stripe
 gem 'stripe'
 
+# Webhooks for Stripe Events
+gem 'stripe_event'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

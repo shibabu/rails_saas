@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
          :confirmable, :async
 
   # validate :email_is_unique, on: :create
+  # => email is indexed so validation above not needed and have been commented out
+
   after_create :create_account
 
   private
