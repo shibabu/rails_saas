@@ -1,0 +1,37 @@
+<%= javascript_include_tag "https://js.stripe.com/v2/" %>
+
+<br>
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+
+    <%= form_tag "/subscriptions/update_credit_card", id: 'payment-form' do %>
+      <span class="payment-errors text-danger"></span>
+
+      <div class="form-group">
+        <label for="card-number" class="control-label">Card Number</label>
+        <input type="text" size="20" class="form-control" id="card-number" data-stripe="number">
+      </div>
+
+      <label for="card-exp" class="control-label">Expiration (MM/YY)</label>
+      <div class="form-group form-inline">
+        <input type="text" size="2" class="form-control" id="card-exp" data-stripe="exp_month">
+        <span> / </span>
+        <input type="text" size="2" class="form-control" id="card-exp" data-stripe="exp_year">
+      </div>
+
+      <div class="form-group">
+        <label for="card-cvc" class="control-label">CVC</label>
+        <input type="text" size="4" class="form-control" id="card-cvc" data-stripe="cvc">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit Payment</button>
+    <% end %>
+
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  Stripe.setPublishableKey("<%= ENV["STRIPE_PUBLISHABLE_KEY"] %>");
+</script>

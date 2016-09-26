@@ -56,6 +56,63 @@ class SubscriptionsController < ApplicationController
   end
 
 
+  # CANCEL SUBSCRIPTION
+  def cancel
+    # Fetch Customer from Stripe
+    current_account = Account.find_by_email(current_user.email)
+    customer_id = current_account.customer_id
+    customer = Stripe::Customer.retrieve customer_id
+
+    # Get Customer's subscriptions
+    subscriptions = customer.subscriptions
+
+    # Find the Subscription in question
+    subscription = subscriptions.data.find {|o| o.plan.id == current_account.stripe_plan_id}
+    if subscription.blank?
+      raise 'Susbcription not found!'
+    end
+
+
+    # Cancel it
+    subscription.delete
+
+    # Update Account Model
+    current_account.stripe_plan_id  = nil
+    current_account.active_until    = nil
+    current_account.save!
+
+    @message = "Subscription successfully canceled!"
+
+  rescue => e
+    redirect_to '/subscriptions', flash: {alert: e.message}
+  end
+
+
+  # <!------- Update Credit Card -------!>
+  def update_credit_card
+
+  end
+
+  # Update Stripe Customer Object with the new Token
+  def update_credit_card_post
+    # get the StripeToken from the Update Credit Card form
+    token             = params[:stripeToken]
+
+    # Get Stripe Customer ID
+    customer_id = Account.find_by_email(current_user.email).customer_id
+
+    # Get Stripe Customer Object using customer_id
+    cx = Stripe::Customer.retrieve customer_id
+
+    # Set the Payment Source with the new Token and update Customer Object
+    cx.source = token
+    cx.save
+
+    redirect_to '/subscriptions', flash: {notice: 'Credit Card successfully updated!'}
+  end
+
+
+
   private
 
   def create_or_update_subscription customer, current_plan, new_plan

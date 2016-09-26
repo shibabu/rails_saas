@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   resources :weather_grid
 
+  get   '/subscriptions/cancel'                 => 'subscriptions#cancel',                   as: :cancel_subscription
+  get   '/subscriptions/update_credit_card'     => 'subscriptions#update_credit_card',       as: :update_credit_card
+  post  '/subscriptions/update_credit_card'     => 'subscriptions#update_credit_card_post'
   resources :subscriptions
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
