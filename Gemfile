@@ -67,6 +67,9 @@ gem 'stripe'
 # Webhooks for Stripe Events
 gem 'stripe_event'
 
+# Multitenancy using apartment gem
+gem 'apartment'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

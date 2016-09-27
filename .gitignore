@@ -14,3 +14,6 @@
 .idea/
 dump.rdb
 .env
+
+# Strangely enough!
+.DS_Store
