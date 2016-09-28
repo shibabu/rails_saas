@@ -70,6 +70,9 @@ gem 'stripe_event'
 # Multitenancy using apartment gem
 gem 'apartment'
 
+# Apartment support for Sidekiq's tenant-specific jobs
+gem 'apartment-sidekiq'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
