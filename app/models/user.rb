@@ -1,16 +1,17 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :async
+         :recoverable, :rememberable, :trackable, :validatable,
+         :confirmable, :async
 
   with_options on: :create do
     validates_uniqueness_of :email
     validates :subdomain, presence: true, uniqueness: true
     validate :forbidden_subdomain?
+    after_validation :create_tenant
   end
 
-  after_validation :create_tenant
   after_create :create_account
 
 
@@ -31,11 +32,6 @@ class User < ActiveRecord::Base
       Apartment::Tenant.create subdomain
       Apartment::Tenant.switch! subdomain
     end
-  end
-
-  def remove_account
-    account = Account.find_by_email email
-    account.destroy!
   end
 
 end
