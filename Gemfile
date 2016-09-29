@@ -42,6 +42,7 @@ gem 'rails_12factor', group: :production
 
 # Auth
 gem 'devise'
+gem 'devise_invitable'
 
 # Asynchronous Devise Mail Send
 gem 'devise-async'

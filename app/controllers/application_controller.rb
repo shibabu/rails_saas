@@ -6,10 +6,19 @@ class ApplicationController < ActionController::Base
   # Add parameters to devise's params filter
   before_action :devise_permitted_params, if: :devise_controller?
 
+  # Make actionmailer host subdomain-aware
+  before_action :mailer_host_subdomain
+
   helper ApplicationHelper
 
 
+  protected
+
   def devise_permitted_params
     devise_parameter_sanitizer.for(:sign_up) << :subdomain
+  end
+
+  def mailer_host_subdomain
+    ActionMailer::Base.default_url_options[:host] = request.host_with_port
   end
 end
