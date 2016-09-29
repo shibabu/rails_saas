@@ -12,6 +12,7 @@
 <% end %>
 
 <br>
-<%= link_to 'Edit Subscription', edit_subscription_path(@account.id), class: 'btn btn-primary' %>
+<%= link_to 'Subscribe to a Plan', new_subscription_path(@account.id), class: 'btn btn-primary' %>
+<%= link_to 'Edit Subscription', edit_subscription_path(@account.id), class: 'btn btn-warning' %>
 <%= link_to 'Cancel Subscription', cancel_subscription_path, class: 'btn btn-danger' %>
 <%= link_to 'Update Payment Method', update_credit_card_path, class: 'btn btn-success' %>
