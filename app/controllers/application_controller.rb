@@ -11,6 +11,11 @@ class ApplicationController < ActionController::Base
 
   helper ApplicationHelper
 
+  rescue_from CanCan::AccessDenied do
+    redirect_to root_url, alert: 'Unauthorized Access'
+  end
+
+
 
   protected
 
@@ -20,5 +25,9 @@ class ApplicationController < ActionController::Base
 
   def mailer_host_subdomain
     ActionMailer::Base.default_url_options[:host] = request.host_with_port
+  end
+
+  def authenticate_inviter!
+    redirect_to(root_url, alert: 'Unauthorized Access') unless current_user.has_role? :app_admin
   end
 end

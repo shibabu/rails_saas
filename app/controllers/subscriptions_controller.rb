@@ -1,6 +1,7 @@
 class SubscriptionsController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :authorize_user
 
   def index
     @account = Account.find_by_email current_user.email
@@ -114,6 +115,10 @@ class SubscriptionsController < ApplicationController
 
 
   private
+
+  def authorize_user
+    authorize! :manage, :subscriptions
+  end
 
   def create_or_update_subscription customer, current_plan, new_plan
     current_subscription = customer.subscriptions.data.find {|o| o.plan.id == current_plan}

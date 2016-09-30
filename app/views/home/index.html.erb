@@ -3,7 +3,9 @@
   <%= link_to 'Sign Up', new_user_registration_path %>
 <% else %>
   Welcome <%= current_user.email %> <br>
-  <%= link_to 'Manage Subscriptions', subscriptions_path %>
+  <% if can? :manage, :subscriptions %>
+    <%= link_to 'Manage Subscriptions', subscriptions_path %>
+  <% end %>
   <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
 <% end %>
 
