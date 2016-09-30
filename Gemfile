@@ -45,7 +45,7 @@ gem 'devise'
 gem 'devise_invitable'
 
 # Asynchronous Devise Mail Send
-gem 'devise-async'
+# gem 'devise-async' # Replaced with ActiveJob, as devise_async is not compatible with new devise versions
 
 # Pretty Print Hashes
 gem 'awesome_print'
@@ -73,6 +73,11 @@ gem 'apartment'
 
 # Apartment support for Sidekiq's tenant-specific jobs
 gem 'apartment-sidekiq'
+
+# Add roles to models
+gem 'rolify'
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

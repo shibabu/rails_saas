@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def devise_permitted_params
-    devise_parameter_sanitizer.for(:sign_up) << :subdomain
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:subdomain])
   end
 
   def mailer_host_subdomain
